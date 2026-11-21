@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jay Tumala — Creative Design Director</title>
+  <meta name="description" content="Jay Tumala is a creative design director in Davao City with 18+ years in brand identity, web, packaging, print and social design." />
+  <meta property="og:title" content="Jay Tumala — Creative Design Director" />
+  <meta property="og:description" content="Brand identity, web, packaging, print and social design." />
+  <meta property="og:image" content="images/og-image.jpg" />
+  <meta name="theme-color" content="#0b0b0c" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23e3212b'/><text x='50' y='72' font-family='Impact,sans-serif' font-size='62' text-anchor='middle' fill='white'>JT</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <script>document.documentElement.classList.add("js");</script>
+</head>
+<body>
+  <div class="cursor" aria-hidden="true"><i></i></div>
+
+  <!-- ===================== Top bar ===================== -->
+  <header class="top">
+    <a href="#top" class="top__id">
+      <strong>Creative design director</strong>
+      <span>Davao City, Philippines</span>
+    </a>
+    <nav class="top__nav" aria-label="Main">
+      <a href="#work">Work</a>
+      <a href="#skills">Skills</a>
+      <a href="#process">Process</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a href="#contact" class="top__avail">Available for freelance <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0z"/></svg></a>
+  </header>
+
+  <main id="top">
+
+    <!-- ===================== Hero ===================== -->
+    <section class="hero" id="hero">
+      <div class="hero__word" aria-hidden="true"><span class="hero__word-inner">PORTFOLIO</span></div>
+      <div class="hero__glow" aria-hidden="true"></div>
+
+      <div class="hero__photo">
+        <img src="images/jay-cutout.webp" alt="Jay Tumala in a black T-shirt with a skull graphic, glasses on, hands in pockets" width="900" height="1528" fetchpriority="high" />
+      </div>
+
+      <div class="hero__intro">
+        <p class="hello">Hello, I'm</p>
+        <h1 class="hero__name"><span class="line"><span>JAY</span></span><span class="line"><span>TUMALA</span></span></h1>
+        <p class="hero__role">Creative design director</p>
+        <p class="hero__bio">
+          For more than 18 years I've designed brand identities, websites, packaging and print,
+          with clear communication, visual storytelling and details done right.
+        </p>
+        <p class="hero__loc">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.8 3 2.8 15 0 18M12 3c-2.8 3-2.8 15 0 18"/></svg>
+          Based in Davao City, working worldwide
+        </p>
+      </div>
+
+      <aside class="hero__side">
+        <div class="hero__badge">
+          <span class="hero__badge-ring"><svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0z"/></svg></span>
+          <p>Brand, web and print, from first sketch to final file.</p>
+        </div>
+        <dl class="stats">
+          <div><dt><span data-count="18">0</span>+</dt><dd>Years in graphic design</dd></div>
+          <div><dt><span data-count="15">0</span></dt><dd>Projects on Behance</dd></div>
+          <div><dt><span data-count="4">0</span></dt><dd>Core services</dd></div>
+        </dl>
+      </aside>
+    </section>
+
+    <!-- ===================== Tools loop ===================== -->
+    <section class="stack" aria-labelledby="stackTitle">
+      <div class="stack__head">
+        <h2 id="stackTitle">Tools I work with</h2>
+        <p>Design, web and AI</p>
+      </div>
+      <!-- Screen readers get a plain list; the moving rows are decorative copies -->
+      <ul class="sr-only" id="stackList"></ul>
+      <div class="loop" data-row="1" aria-hidden="true"><div class="loop__track"></div></div>
+      <div class="loop loop--rev" data-row="2" aria-hidden="true"><div class="loop__track"></div></div>
+    </section>
+
+    <!-- ===================== Selected projects ===================== -->
+    <section class="block" id="work">
+      <div class="block__head">
+        <h2 class="reveal-title">Selected projects</h2>
+        <span class="block__rule" aria-hidden="true"></span>
+        <button class="more" type="button" id="toggleAll" aria-expanded="false" aria-controls="allWork">
+          <span class="more__label">View all projects</span>
+          <svg viewBox="0 0 34 12" aria-hidden="true"><path d="M0 6h32M27 1l5 5-5 5"/></svg>
+        </button>
+      </div>
+      <div class="cards" id="featured"></div>
+
+      <div class="all" id="allWork" hidden>
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button class="chip is-active" data-filter="all">All<sup></sup></button>
+          <button class="chip" data-filter="web">Web Design<sup></sup></button>
+          <button class="chip" data-filter="uiux">UI/UX<sup></sup></button>
+          <button class="chip" data-filter="prints">Prints<sup></sup></button>
+          <button class="chip" data-filter="social">Social Media<sup></sup></button>
+          <button class="chip" data-filter="video">Video<sup></sup></button>
+          <button class="chip" data-filter="apparel">Apparel Design<sup></sup></button>
+        </div>
+        <div class="cards cards--all" id="others"></div>
+        <p class="empty" id="emptyNote" hidden>No <span></span> projects here yet. <a href="https://www.behance.net/jay2mala" target="_blank" rel="noopener">See Behance</a> for more.</p>
+        <p class="all__more"><a href="https://www.behance.net/jay2mala" target="_blank" rel="noopener">See everything on Behance</a></p>
+      </div>
+    </section>
+
+    <!-- ===================== Skills · Process · Quote ===================== -->
+    <section class="trio">
+      <div class="trio__col" id="skills">
+        <h2 class="reveal-title">Experience &amp; skills</h2>
+        <h3 class="label">Experience</h3>
+        <ul class="exp">
+          <li><div><strong>Creative Design Director</strong><span>Sky Flooring USA</span></div><em>Now</em></li>
+          <!-- Add earlier roles or your education like this:
+          <li><div><strong>Role or degree</strong><span>Company or school</span></div><em>2015 – 2020</em></li> -->
+          <li><div><strong>Graphic designer</strong><span>Brand, web, packaging and print</span></div><em>18+ years</em></li>
+        </ul>
+        <h3 class="label">Skills</h3>
+        <ul class="skills">
+          <li>Brand identity</li><li>Logo design</li><li>Art direction</li><li>Web design</li>
+          <li>UI design</li><li>Figma</li><li>Adobe Creative Cloud</li><li>Packaging</li>
+          <li>Print production</li><li>Social media</li><li>Sports graphics</li><li>Team leadership</li>
+        </ul>
+      </div>
+
+      <div class="trio__col" id="process">
+        <h2 class="reveal-title">Work process</h2>
+        <ol class="steps">
+          <li>
+            <span class="steps__n">01</span>
+            <span class="steps__icon"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></span>
+            <div><h3>Discover</h3><p>Understanding your goals, audience and project requirements.</p></div>
+          </li>
+          <li>
+            <span class="steps__n">02</span>
+            <span class="steps__icon"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 0-3.6 10.8c.7.6 1.1 1.4 1.1 2.2h5c0-.8.4-1.6 1.1-2.2A6 6 0 0 0 12 3z"/></svg></span>
+            <div><h3>Define</h3><p>Moodboards, sketches and the one concept worth building on.</p></div>
+          </li>
+          <li>
+            <span class="steps__n">03</span>
+            <span class="steps__icon"><svg viewBox="0 0 24 24"><path d="M4 20l4-1 11-11-3-3L5 16l-1 4zM14 6l3 3"/></svg></span>
+            <div><h3>Design</h3><p>Crafting the visual system, from logo to layouts to screens.</p></div>
+          </li>
+          <li>
+            <span class="steps__n">04</span>
+            <span class="steps__icon"><svg viewBox="0 0 24 24"><path d="M4 7h10M18 7h2M4 17h4M12 17h8"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/></svg></span>
+            <div><h3>Refine</h3><p>Short feedback rounds with you until every detail is right.</p></div>
+          </li>
+          <li>
+            <span class="steps__n">05</span>
+            <span class="steps__icon"><svg viewBox="0 0 24 24"><path d="M21 3 3 10.5l7 2.5 2.5 7L21 3zM10 13l5-5"/></svg></span>
+            <div><h3>Deliver</h3><p>Organised, production-ready files and guidelines your team can use.</p></div>
+          </li>
+        </ol>
+      </div>
+
+      <figure class="quote">
+        <svg class="quote__mark" viewBox="0 0 48 36" aria-hidden="true"><path d="M0 36V20C0 8 6 1 18 0v7c-6 1-9 5-9 11h9v18H0zm28 0V20c0-12 6-19 18-20v7c-6 1-9 5-9 11h9v18H28z"/></svg>
+        <blockquote><p>Good design isn't just how it looks. It's how clearly it speaks.</p></blockquote>
+        <figcaption>
+          <svg class="signature" viewBox="0 0 220 90" role="img" aria-label="Jay">
+            <text x="8" y="66">Jay Tumala</text>
+          </svg>
+        </figcaption>
+        <a class="quote__cta" href="#contact">Let's create something great together</a>
+        <svg class="star quote__star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0z"/></svg>
+      </figure>
+    </section>
+
+    <!-- ===================== Contact ===================== -->
+    <section class="contact" id="contact">
+      <div class="contact__intro">
+        <h2 class="reveal-title">Let's work<br />together <svg class="star" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 0c.6 6.6 5.4 11.4 12 12-6.6.6-11.4 5.4-12 12-.6-6.6-5.4-11.4-12-12C6.6 11.4 11.4 6.6 12 0z"/></svg></h2>
+        <p>I'm open to new projects and collaborations. Tell me what you're making and I'll reply within a day or two.</p>
+        <a class="pill" href="mailto:jaytumala@gmail.com">
+          <span class="pill__arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+          Start a project
+        </a>
+      </div>
+
+      <ul class="channels">
+        <li>
+          <span class="channels__icon"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span>
+          <a href="mailto:jaytumala@gmail.com">jaytumala@gmail.com</a>
+          <button type="button" class="copy" data-copy="jaytumala@gmail.com">Copy</button>
+        </li>
+        <li>
+          <span class="channels__icon"><svg viewBox="0 0 24 24"><path d="M3 7h6.5a3 3 0 0 1 0 6H3V7zM3 13h7.5a3.2 3.2 0 0 1 0 6.4H3V13zM14.5 8.5h6M14 15.5h7.5a3.7 3.7 0 1 0-7.4.4 3.6 3.6 0 0 0 6.6 2"/></svg></span>
+          <a href="https://www.behance.net/jay2mala" target="_blank" rel="noopener">behance.net/jay2mala</a>
+        </li>
+        <li>
+          <span class="channels__icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M8 10v7M8 7v.01M12 17v-4a2.5 2.5 0 0 1 5 0v4M12 10v7"/></svg></span>
+          <a href="https://www.linkedin.com/in/jay-tumala-68a605187/" target="_blank" rel="noopener">linkedin.com/in/jay-tumala</a>
+        </li>
+        <li>
+          <span class="channels__icon"><svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg></span>
+          <span>Davao City, Philippines · <time id="clock">--:--</time> local time</span>
+        </li>
+      </ul>
+
+      <!-- Laptop mockup: a live miniature of the hero -->
+      <div class="laptop" aria-hidden="true">
+        <div class="laptop__lid">
+          <div class="laptop__screen">
+            <div class="mini">
+              <div class="mini__word">PORTFOLIO</div>
+              <img src="images/jay-cutout.webp" alt="" />
+              <div class="mini__name">JAY<br />TUMALA</div>
+              <div class="mini__bar"></div>
+            </div>
+          </div>
+        </div>
+        <div class="laptop__base"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>© <span id="year"></span> Jay Tumala</p>
+    <p>Designed and built in Davao City</p>
+    <a href="#top">Back to top ↑</a>
+  </footer>
+
+  <!-- Project panel -->
+  <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="sheetTitle" aria-hidden="true">
+    <div class="sheet__backdrop" data-close></div>
+    <div class="sheet__panel">
+      <div class="sheet__bar">
+        <button class="ghost" type="button" data-close>Close</button>
+        <div>
+          <button class="ghost" type="button" data-step="-1" aria-label="Previous project">←</button>
+          <button class="ghost" type="button" data-step="1" aria-label="Next project">→</button>
+        </div>
+      </div>
+      <div id="sheetMedia"></div>
+      <span class="sheet__num" id="sheetNum"></span>
+      <h3 id="sheetTitle"></h3>
+      <p class="sheet__tags" id="sheetTags"></p>
+      <p id="sheetSummary"></p>
+      <a id="sheetLink" class="pill" href="#" target="_blank" rel="noopener">
+        <span class="pill__arrow"><svg viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></span>
+        View on Behance
+      </a>
+    </div>
+  </div>
+
+  <script src="js/projects.js"></script>
+  <script src="js/stack.js"></script>
+  <script src="js/tool-icons.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
