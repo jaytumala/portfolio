@@ -171,6 +171,35 @@ function countUp() {
   rows.forEach((r) => { if (r.dir > 0) { r.x = -r.track.scrollWidth / 2; r.track.style.transform = `translate3d(${r.x}px,0,0)`; } });
 })();
 
+/* ================= Skill cards: tool logos ================= */
+(() => {
+  const icons = window.TOOL_ICONS || {};
+  const names = Object.fromEntries((window.STACK || []).map((t) => [t.icon, t.name]));
+  names.adobe = names.adobe || "Adobe Firefly"; names.midjourney = names.midjourney || "Midjourney";
+  Object.assign(names, { asana: "Asana", trello: "Trello", notion: "Notion", clickup: "ClickUp", googlesheets: "Google Sheets", googledrive: "Google Drive", slack: "Slack" }, { ...names });
+  const svg = (path, cls = "") => `<svg class="${cls}" viewBox="0 0 24 24" aria-hidden="true"><path d="${path}"/></svg>`;
+  const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add("is-in"); io.unobserve(e.target); } }), { threshold: 0.2 });
+  $$(".skill").forEach((card, k) => {
+    const keys = (card.dataset.tools || "").split(/\s+/).filter(Boolean);
+    const first = icons[keys[0]];
+    if (first) { card.insertAdjacentHTML("afterbegin", svg(first.path, "skill__mark")); card.style.setProperty("--brand", first.hex); }
+    const row = document.createElement("div");
+    row.className = "skill__tools";
+    row.setAttribute("role", "list");
+    keys.forEach((key) => {
+      const ic = icons[key], name = names[key] || key;
+      const t = document.createElement("span");
+      t.className = "tl"; t.tabIndex = 0; t.dataset.name = name; t.setAttribute("role", "listitem"); t.setAttribute("aria-label", name);
+      t.style.setProperty("--c", ic ? (ic.hex === "#FFFFFF" ? "#ffffff" : ic.hex) : "#e3212b");
+      t.innerHTML = ic ? svg(ic.path) : `<b>${name.split(/\s+/).map((w) => w[0]).join("").slice(0, 2)}</b>`;
+      row.appendChild(t);
+    });
+    card.appendChild(row);
+    card.style.setProperty("--d", `${(k % 3) * 0.1}s`);
+    io.observe(card);
+  });
+})();
+
 /* ================= Project cards ================= */
 const resolved = new Map();
 function resolveImage(p) {
@@ -206,7 +235,7 @@ function media(p) {
 function card(p, num) {
   const a = document.createElement("a");
   a.className = "card";
-  a.href = p.url;
+  a.href = p.url || "#";
   a.dataset.index = projects.indexOf(p);
   a.dataset.cat = p.cat;
   a.appendChild(media(p));
@@ -311,7 +340,8 @@ function openSheet(i) {
   $("#sheetTitle").textContent = p.title;
   $("#sheetTags").textContent = [p.tags.replace(/\s*·\s*/g, ", "), p.year].filter(Boolean).join(", ");
   $("#sheetSummary").textContent = p.summary || "";
-  $("#sheetLink").href = p.url;
+  $("#sheetLink").href = p.url || "#";
+  $("#sheetLink").hidden = !p.url;
   $("#sheetMedia").replaceChildren(media(p));
   if (!sheet.classList.contains("is-open")) {
     lastFocus = document.activeElement;
@@ -348,7 +378,7 @@ const secObs = new IntersectionObserver((entries) => {
     if (e.isIntersecting) navLinks.forEach((a) => a.classList.toggle("is-current", a.getAttribute("href") === `#${e.target.id}`));
   });
 }, { rootMargin: "-45% 0px -50% 0px" });
-["#work", "#skills", "#process", "#contact"].forEach((id) => secObs.observe($(id)));
+["#work", "#process", "#skills", "#contact"].forEach((id) => secObs.observe($(id)));
 
 /* ================= Cursor: red dot + trailing ring ================= */
 if (finePointer) {

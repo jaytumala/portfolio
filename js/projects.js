@@ -91,4 +91,29 @@ window.PROJECTS = [
     summary: "Website design.",
     image: "images/projects/72518773.webp", cover: CDN + "7c20b572518773.Y3JvcCwxMjAwLDkzOCwwLDcwNg.jpg",
     url: BH + "72518773/Website-Design", featured: false, size: "" },
+
+  // ---- Sky Flooring prototypes built with AI (Claude). Cover and description only, no public link. ----
+  { title: "Product 3D Viewers", cat: "uiux", tags: "Interactive 3D · Prototype", year: "2026",
+    summary: "Interactive 3D viewers for four Sky Flooring accessories (stair tread, flush stair tread, reducer and T-molding). Rotate the part, switch between the SKYAXIS and SKYRESERVE series, and see it in every real wood color.",
+    image: "images/projects/proto-viewers.webp", cover: "", url: "", featured: false, size: "" },
+
+  { title: "SKY Accessories Finder", cat: "uiux", tags: "UX · Prototype", year: "2026",
+    summary: "A redesign proposal for the Sky Flooring accessories pages: pick a flooring collection and color, and every matching molding and stair part appears on one screen, each with its own page.",
+    image: "images/projects/proto-finder.webp", cover: "", url: "", featured: false, size: "" },
+
+  { title: "Sample Order Page", cat: "web", tags: "Web design · E-commerce", year: "2026",
+    summary: "A sample ordering page for Sky Flooring: choose up to three colors, enter a shipping address and pay a flat shipping fee by card.",
+    image: "images/projects/proto-samples.webp", cover: "", url: "", featured: false, size: "" },
+
+  { title: "Designer Book Folders", cat: "prints", tags: "Print · Packaging", year: "2026",
+    summary: "Fold-out designer book folders for eight Sky Flooring series, with room photos, color selections, specifications and warranty panels, laid out on print-ready dielines.",
+    image: "images/projects/proto-folders.webp", cover: "", url: "", featured: false, size: "" },
+
+  { title: "SkyCraft Bespoke Parquetry Catalog", cat: "prints", tags: "Catalog · Print", year: "2026",
+    summary: "A 24-page catalog for Sky Flooring's made-to-order parquetry line for designers and architects, with a room scene, piece sizes, layout drawing and color chart for each design.",
+    image: "images/projects/proto-skycraft.webp", cover: "", url: "", featured: false, size: "" },
+
+  { title: "OJBA Booth Loop", cat: "video", tags: "Motion · Trade show", year: "2026",
+    summary: "A one-minute vertical video that loops seamlessly on a trade show booth screen, showing Sky Flooring's herringbone, chevron and parquetry floors.",
+    image: "images/projects/proto-ojba.webp", cover: "", url: "", featured: false, size: "" },
 ];

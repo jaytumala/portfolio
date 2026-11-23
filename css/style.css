@@ -401,3 +401,68 @@ h2 { font-family: var(--display); font-weight: 400; text-transform: uppercase; l
   .trio, .contact { grid-template-columns: 1fr; }
   .trio__col { border-right: 0; border-bottom: 1px solid var(--line); }
 }
+
+#sheetLink[hidden] { display: none; }
+
+/* ================= Skills & tools ================= */
+.exp__more { margin-top: 1.5rem; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; }
+.exp__more a { color: var(--red); }
+.skillgrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.skill {
+  position: relative; overflow: hidden; isolation: isolate; background: var(--bg);
+  padding: clamp(1.5rem, 2.6vw, 2.25rem); min-height: 280px; display: flex; flex-direction: column;
+  transition: background .4s;
+}
+.skill__mark {                       /* oversized logo of the main tool, in the background */
+  position: absolute; z-index: -1; right: -40px; bottom: -50px; width: 220px; height: 220px;
+  fill: #fff; opacity: .04; transform: rotate(-12deg); transition: opacity .5s, transform .8s var(--out), fill .5s;
+}
+.skill h3 { font-family: var(--display); font-weight: 400; text-transform: uppercase; font-size: clamp(1.5rem, 2.2vw, 2rem); line-height: 1.05; letter-spacing: .01em; }
+.skill p { color: var(--muted); font-size: .9rem; margin-top: .6rem; max-width: 30ch; }
+.skill__tools { display: flex; flex-wrap: wrap; gap: .55rem; margin-top: auto; padding-top: 1.75rem; }
+.tl {
+  position: relative; width: 52px; height: 52px; border-radius: 14px; display: grid; place-items: center;
+  background: #161618; border: 1px solid #2a2a2e; transition: transform .45s var(--out), background .35s, border-color .35s;
+}
+.tl svg { width: 26px; height: 26px; fill: #cfcdc9; transition: fill .35s; }
+.tl b { font-family: var(--display); font-weight: 400; font-size: 1rem; color: #cfcdc9; }
+.tl::after {                         /* tool name tooltip */
+  content: attr(data-name); position: absolute; left: 50%; bottom: calc(100% + 8px); transform: translate(-50%, 4px);
+  white-space: nowrap; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; background: #fff; color: #111;
+  padding: .3rem .5rem; border-radius: 4px; opacity: 0; pointer-events: none; transition: opacity .2s, transform .2s;
+}
+.tl:hover::after, .tl:focus-visible::after { opacity: 1; transform: translate(-50%, 0); }
+.skill:hover { background: #121214; }
+.skill:hover .skill__mark { opacity: .09; transform: rotate(-4deg) scale(1.08); fill: var(--brand, var(--red)); }
+.skill:hover .tl { background: color-mix(in srgb, var(--c) 14%, #111); border-color: color-mix(in srgb, var(--c) 55%, transparent); }
+.skill:hover .tl svg { fill: var(--c); }
+.skill:hover .tl b { color: #fff; }
+.skill:hover .tl:nth-child(1) { transform: translateY(-4px); }
+.skill:hover .tl:nth-child(2) { transform: translateY(-4px); transition-delay: .04s; }
+.skill:hover .tl:nth-child(3) { transform: translateY(-4px); transition-delay: .08s; }
+.skill:hover .tl:nth-child(4) { transform: translateY(-4px); transition-delay: .12s; }
+.skill:hover .tl:nth-child(5) { transform: translateY(-4px); transition-delay: .16s; }
+.skill:hover .tl:nth-child(6) { transform: translateY(-4px); transition-delay: .2s; }
+.skill::before { content: ""; position: absolute; left: 0; top: 0; height: 3px; width: 100%; background: var(--red); transform: scaleX(0); transform-origin: left; transition: transform .6s var(--out); }
+.skill:hover::before { transform: scaleX(1); }
+.js .skill { opacity: 0; transform: translateY(24px); transition: opacity .8s var(--ease), transform .8s var(--out), background .4s; transition-delay: var(--d, 0s); }
+.js .skill.is-in { opacity: 1; transform: none; }
+@media (max-width: 1100px) { .skillgrid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 680px) { .skillgrid { grid-template-columns: 1fr; } .skill { min-height: 0; } }
+@media (prefers-reduced-motion: reduce) { .js .skill { opacity: 1; transform: none; } }
+@media (hover: none) {
+  .skill .tl { background: color-mix(in srgb, var(--c) 14%, #111); border-color: color-mix(in srgb, var(--c) 45%, transparent); }
+  .skill .tl svg { fill: var(--c); }
+  .skill .skill__mark { opacity: .07; fill: var(--brand, var(--red)); }
+}
+
+/* Wide card: project management spans the full row */
+.skill--wide { grid-column: 1 / -1; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) auto; align-items: center; gap: 1.5rem 3rem; }
+.skill--wide p { max-width: 46ch; }
+.skill--wide .skill__tools { margin-top: 0; padding-top: 0; grid-column: 2; grid-row: 1 / span 2; }
+.skill--wide h3 { align-self: end; } .skill--wide p { align-self: start; margin-top: 0; }
+.skill--wide .skill__mark { right: auto; left: 38%; bottom: -70px; }
+.skill:hover .tl:nth-child(7) { transform: translateY(-4px); transition-delay: .24s; }
+@media (max-width: 900px) { .skill--wide { display: flex; } .skill--wide .skill__tools { margin-top: auto; padding-top: 1.75rem; } .skill--wide p { margin-top: .6rem; } }
+
+.nw { white-space: nowrap; }
