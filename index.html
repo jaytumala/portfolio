@@ -27,6 +27,7 @@
     </a>
     <nav class="top__nav" aria-label="Main">
       <a href="#work">Work</a>
+      <a href="#video">Video</a>
       <a href="#skills">Skills</a>
       <a href="#process">Process</a>
       <a href="#contact">Contact</a>
@@ -109,6 +110,25 @@
         <div class="cards cards--all" id="others"></div>
         <p class="empty" id="emptyNote" hidden>No <span></span> projects here yet. <a href="https://www.behance.net/jay2mala" target="_blank" rel="noopener">See Behance</a> for more.</p>
         <p class="all__more"><a href="https://www.behance.net/jay2mala" target="_blank" rel="noopener">See everything on Behance</a></p>
+      </div>
+    </section>
+
+    <!-- ================= Motion & video ================= -->
+    <section class="block reel" id="video" aria-labelledby="reelTitle">
+      <div class="block__head">
+        <h2 class="reveal-title" id="reelTitle">Motion &amp; video</h2>
+        <span class="block__rule" aria-hidden="true"></span>
+      </div>
+      <div class="reel__wrap">
+        <div class="reel__stage" id="reelStage"></div>
+        <div class="reel__side">
+          <div class="reel__now" aria-live="polite">
+            <p class="reel__kind" id="reelKind"></p>
+            <h3 id="reelName"></h3>
+            <p id="reelSummary"></p>
+          </div>
+          <ol class="reel__list" id="reelList"></ol>
+        </div>
       </div>
     </section>
 
@@ -287,6 +307,7 @@
 
   <script src="js/projects.js"></script>
   <script src="js/stack.js"></script>
+  <script src="js/videos.js"></script>
   <script src="js/tool-icons.js"></script>
   <script src="js/main.js"></script>
 </body>

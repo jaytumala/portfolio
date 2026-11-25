@@ -411,3 +411,70 @@ $$("[data-copy]").forEach((btn) => {
   });
 });
 })();
+
+/* ================= Motion & video ================= */
+(() => {
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => [...el.querySelectorAll(s)];
+  const list = window.VIDEOS || [];
+  const sec = document.getElementById("video");
+  if (!sec) return;
+  if (!list.length) { sec.hidden = true; return; }
+  const stage = $("#reelStage"), ul = $("#reelList");
+  const esc = (s) => String(s || "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const playIcon = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 3l16 9-16 9z"/></svg>';
+
+  // YouTube / Vimeo link -> privacy-friendly embed URL
+  const embedUrl = (u) => {
+    let m = u.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+    if (m) return `https://www.youtube-nocookie.com/embed/${m[1]}?autoplay=1&rel=0`;
+    m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/);
+    if (m) return `https://player.vimeo.com/video/${m[1]}?autoplay=1&dnt=1`;
+    return "";
+  };
+  const label = (v) => v.src || embedUrl(v.embed || "") ? "Play" : "Watch";
+
+  ul.innerHTML = list.map((v, i) => `
+    <li><button type="button" class="reel__item" data-i="${i}" aria-current="false">
+      <span class="reel__thumb"><img src="${esc(v.poster)}" alt="" loading="lazy" /></span>
+      <span><b>${esc(v.title)}</b><small>${esc(v.kind)}${v.year ? " · " + esc(v.year) : ""}</small></span>
+      <i>${v.duration ? esc(v.duration) + " · " : ""}${v.orientation === "portrait" ? "9:16" : "16:9"}</i>
+    </button></li>`).join("");
+
+  const show = (i, autoplay) => {
+    const v = list[i];
+    $$(".reel__item", ul).forEach((b) => b.setAttribute("aria-current", String(+b.dataset.i === i)));
+    $("#reelKind").textContent = [v.kind, v.year].filter(Boolean).join(" · ");
+    $("#reelName").textContent = v.title;
+    $("#reelSummary").textContent = v.summary || "";
+    stage.classList.toggle("is-portrait", v.orientation === "portrait");
+    const bg = `<img class="reel__bg" src="${esc(v.poster)}" alt="" aria-hidden="true" />`;
+    const emb = embedUrl(v.embed || "");
+
+    if (autoplay && v.src) {
+      stage.innerHTML = bg + `<video class="reel__frame" src="${esc(v.src)}" poster="${esc(v.poster)}" controls playsinline autoplay ${v.orientation === "portrait" ? "loop" : ""}></video>`;
+      const vid = $("video", stage); vid.focus({ preventScroll: true });
+      vid.addEventListener("error", () => {
+        stage.innerHTML = bg + `<img class="reel__poster" src="${esc(v.poster)}" alt="" /><p class="reel__play" style="cursor:default"><em>Video file not found: ${esc(v.src)}</em></p>`;
+      });
+      return;
+    }
+    if (autoplay && emb) {
+      stage.innerHTML = `<iframe class="reel__frame" src="${emb}" title="${esc(v.title)}" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+      return;
+    }
+    const ext = !v.src && !emb && v.link;
+    stage.innerHTML = bg + `<img class="reel__poster" src="${esc(v.poster)}" alt="${esc(v.title)}" />` +
+      (ext
+        ? `<a class="reel__play" href="${esc(v.link)}" target="_blank" rel="noopener" aria-label="Watch ${esc(v.title)} (opens in a new tab)"><span>${playIcon}</span><em>Watch on ${esc(new URL(v.link).hostname.replace(/^www\./, ""))} ↗</em></a>`
+        : `<button type="button" class="reel__play" aria-label="Play ${esc(v.title)}"><span>${playIcon}</span><em>${label(v)} · ${v.orientation === "portrait" ? "Vertical" : "Widescreen"}</em></button>`);
+    const btn = $("button.reel__play", stage);
+    if (btn) btn.addEventListener("click", () => show(i, true));
+  };
+
+  ul.addEventListener("click", (e) => {
+    const b = e.target.closest(".reel__item");
+    if (b) show(+b.dataset.i, false);
+  });
+  show(0, false);
+})();
